@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: imagegym
+Version: 0.3.1
+Summary: GraphGym: platform for designing and evaluating Graph Neural Networks (GNN)
+Home-page: https://github.com/snap-stanford/imagegym
+Author: Jiaxuan You, Rex Ying
+Author-email: jiaxuan@cs.stanford.edu, rex@cs.stanford.edu
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+
+# VamoH
+
+This is the official PyTorch implementation of VaMoH.
+
+# Installation
+
+
+First, create a conda environment and activate it.
+
+```bash
+conda create --name vamoh python=3.8  --no-default-packages
+conda activate vamoh
+```
+
+Then, install cartopy
+```bash
+conda install --channel conda-forge cartopy
+```
+Then, install the requirements
+
+```bash
+pip install -r requirements_pip.txt
+pip install -e .
+```
+
+
+## Usage
+python main.py --cfg ./configs/models/submission.yaml
+python main.py --cfg ./configs/models/shapes.yaml
+
+## Results
+TODO
+
+
+## Citation
+
+If you use this code in your research, please cite the following paper:
+
+```
+@article{...}
+ ```
+
+# License
+
+

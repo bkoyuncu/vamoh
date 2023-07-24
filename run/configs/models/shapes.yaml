@@ -1,0 +1,122 @@
+out_dir: results_shapes
+seed: 0
+note: "run experiments"
+tensorboard_each_run: False
+device: cpu
+use_profiler: False
+num_threads: 1
+num_workers: 0
+pin_memory: False
+print: "both"
+dataset:
+  format: torch
+  name: shapes3d_10
+  dir: ../datasets/
+  task: image
+  task_type: generative
+  use_subset: 1.0
+  size: 64
+  use_bn_initial: False
+  missing_perc: 0.0
+  threshold: 0.0
+  use_train_as_valid: True
+  use_number_batch: 1
+train:
+  mode: standard
+  batch_size: 16
+  eval_period: 50
+  ckpt_period: 100
+  ckpt_clean: False
+  clip: 200.0
+model:
+  type: vamoh
+  loss_fun: elbo
+  dim_z: 32
+  distr_z: nf
+  beta_z: 1.0
+  beta_c: 1.0 #this is the max value if scheduler is Linear Poly or Exp
+  start_scheduler: -1
+  end_scheduler: -1
+  distr_x: logistic # beta, ber, cb, normal, cat
+  name_encoding: fourier
+  encoder_type: "pointconv"
+  use_k_mixture: True
+  two_step_training: True
+  scenerio: [4]
+  scenerio_end: [200]
+  scenerio_start: [0]
+  learn_residual_posterior: False
+  post_cat_has_z: True
+  simple_cat: False
+  cat_encoder_x: False
+params_nf:
+  type: "planar" #planar
+  act: "leaky_relu"
+  L: 20
+params_pointconvnet:
+  add_batchnorm: false
+  add_sigmoid: false
+  add_weightnet_batchnorm: false
+  avg_pooling_num_neighbors: [None,None,None]
+  avg_pooling_num_output_points: [None,None,None]
+  coordinate_dim: 0
+  deterministic: true
+  feature_dim: 0
+  layer_configs: []
+  linear_layer_sizes: []
+  mid_channels: [16,16]
+  num_neighbors: [16,16,16]
+  num_output_points: [1024,256,64]
+  out_channels: [32,64,256]
+  same_coordinates: "all"
+  use_encoded_coors: True
+params_k_mixture:
+  K: 5
+params_cat_x:
+  act: lrelu_01
+  dropout: 0.0
+  layers: [16,2]
+  batchnorm: False
+  output_dropout: 0.0
+  l2norm: False
+params_cat_prior:
+  act: lrelu_01
+  dropout: 0.0
+  layers: [32, 32]
+  batchnorm: False
+  output_dropout: 0.0
+  l2norm: False
+params_cat_post:
+  act: lrelu_01
+  dropout: 0.0
+  layers: [32, 32]
+  batchnorm: False
+  output_dropout: 0.0
+  l2norm: False
+params_encoding:
+  num_frequencies: 128
+  std: 2.0
+  learn_feats: False
+params_hyper:
+  dim_inner: 128
+  num_layers: 2
+  act: lrelu_01
+  dropout: 0.0
+  coords_dim: 0
+params_fnrep:
+  dim_inner: 32
+  num_layers: 2
+  act: lrelu_01
+  dropout: 0.0
+optim:
+  optimizer: adam
+  base_lr: 0.0001
+  max_epoch: 600
+  scheduler: exp
+  gamma: 0.99
+  use_scheduler: False
+  weight_decay: 0.0
+plotting:
+  res_epoch: 50
+  super_res_epoch: 50
+  use_neighbors: False

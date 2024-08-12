@@ -1,6 +1,6 @@
 # VamoH
 
-This is the official PyTorch implementation of [VaMoH](https://arxiv.org/abs/2302.06223) 
+This is the official PyTorch implementation of [VaMoH](https://arxiv.org/abs/2302.06223).
 
 # Installation
 

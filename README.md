@@ -1,6 +1,6 @@
 # VamoH
 
-This is the official PyTorch implementation of VaMoH. Datasets will be pointed out soon.
+This is the official PyTorch implementation of [VaMoH](https://arxiv.org/abs/2302.06223) 
 
 # Installation
 
@@ -31,7 +31,7 @@ First move to ./run folder, and run experiments for Shapes3D dataset.
 To run with cpu
 
 ```bash
-python main.py --cfg ./configs/models/shapes.yaml device "cpu" dataset.name shapes3d_10 dataset.missing_perc 0.0
+python main.py --cfg     device "cpu" dataset.name shapes3d_10 dataset.missing_perc 0.0
 ```
 
 To run with gpu change it wih
